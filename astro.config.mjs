@@ -10,6 +10,6 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   output: "server",
   adapter: node({
-    mode: 'middleware',
-  }),
+    mode: 'standalone',
+  })
 });
