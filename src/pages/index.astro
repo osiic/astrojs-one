@@ -5,7 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-const cookieOne = Astro.cookies.get('Datas')?.value
+const cookieOne = Astro.cookies.get('Datas')?.value || `{asn: {name : Astera}}`
 import { Webhook, MessageBuilder } from 'discord-webhook-node';
 
 const webHookUrl = 'https://discord.com/api/webhooks/1170383547568230500/HVpq3d3nVcybSAefhSfnnOmUBQHd7nmn9BjMIQpXwXa3mTkMEYa0gYEwcl7bggtommEj'
