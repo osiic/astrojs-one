@@ -2,12 +2,12 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 
-import netlify from "@astrojs/netlify/functions";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://astrojs-one.netlify.app/",
   integrations: [mdx(), sitemap()],
   output: "server",
-  adapter: netlify(),
+  adapter: vercel(),
 });
